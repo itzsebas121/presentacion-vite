@@ -53,13 +53,13 @@ const slideTitles = [
   'Portada',
   'Ruta técnica de la presentación',
   'Qué es Ubuntu Server',
-  'Ubuntu en contexto',
-  'Ventajas y desventajas reales',
-  'Cómo se trabajaba antes en web',
-  'Dónde se rompe la velocidad',
-  'Qué cambia con Vite',
-  'Qué pasa dentro de Vite',
-  'Preparación de entorno y creación',
+  'Escenarios reales de Ubuntu Server',
+  'Fortalezas y costos de adopción',
+  'Por qué el enfoque tradicional no escaló',
+  'Impacto acumulado de la lentitud',
+  '¿Qué es Vite?',
+  'Velocidad con Vite en frameworks',
+  'Setup técnico y arranque con Vite',
   'Cómo leer la estructura base',
   'Clonar vs arrancar desde cero',
   'IA aplicada al flujo técnico',
@@ -100,68 +100,57 @@ export default function App() {
       gsap.killTweensOf(slide.querySelectorAll('.slide-title, .animate-slide-up, .animate-fade-in, .animate-scale-in'));
       
       if (isActive) {
-        // Animación de entrada: Túnel Dinámico Alterno
+        // Animación de entrada optimizada
         const isNextDir = direction === 'next';
-        const alt = current % 2 === 0 ? 1 : -1; // Altera la dirección (izquierda/derecha)
         
         gsap.fromTo(slide, 
           { 
             autoAlpha: 0, 
-            scale: isNextDir ? 0.3 : 2.5, 
-            x: isNextDir ? 400 * alt : -400 * alt, 
-            y: isNextDir ? 50 * alt : -50 * alt,
-            rotation: isNextDir ? 10 * alt : -10 * alt,
-            pointerEvents: 'none',
-            transformOrigin: '50% 50%'
+            scale: isNextDir ? 0.9 : 1.1, 
+            xPercent: isNextDir ? 100 : -100,
+            pointerEvents: 'none'
           },
           { 
             autoAlpha: 1, 
             scale: 1,
-            x: 0,
-            y: 0,
-            rotation: 0,
-            duration: 0.86,
-            ease: 'power3.inOut', // La curva más fluida posible
-            force3D: true, // Fuerza aceleración pura por GPU para máximo FPS
+            xPercent: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            force3D: true,
             pointerEvents: 'auto',
             onStart: () => {
-              // Textos y parallax interno
               const titles = slide.querySelectorAll('.slide-title');
               if (titles.length) {
                 gsap.fromTo(titles, 
-                  { y: 80, autoAlpha: 0, scale: 0.9 },
-                  { y: 0, autoAlpha: 1, scale: 1, duration: 0.72, ease: 'power3.out', stagger: 0.06, delay: 0.22 }
+                  { y: 30, autoAlpha: 0 },
+                  { y: 0, autoAlpha: 1, duration: 0.5, ease: 'power2.out', delay: 0.1 }
                 );
               }
               
               const animatedElements = slide.querySelectorAll('.animate-slide-up, .animate-fade-in, .animate-scale-in');
               if (animatedElements.length) {
                 gsap.fromTo(animatedElements,
-                  { y: 60, autoAlpha: 0 },
-                  { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out', stagger: 0.03, delay: 0.28 }
+                  { y: 20, autoAlpha: 0 },
+                  { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out', stagger: 0.02, delay: 0.15 }
                 );
               }
             }
           }
         );
       } else if (isExiting && current !== previous) {
-        // Animación de salida: Viaja en dirección opuesta al entrante
+        // Animación de salida optimizada
         const isNextDir = direction === 'next';
-        const alt = current % 2 === 0 ? 1 : -1; // Usa el alternador del slide actual
 
         gsap.to(slide, {
           autoAlpha: 0,
-          scale: isNextDir ? 2.5 : 0.3,
-          x: isNextDir ? -400 * alt : 400 * alt,
-          y: isNextDir ? -50 * alt : 50 * alt,
-          rotation: isNextDir ? -10 * alt : 10 * alt,
-          duration: 0.82,
-          ease: 'power3.inOut',
+          scale: isNextDir ? 1.1 : 0.9,
+          xPercent: isNextDir ? -100 : 100,
+          duration: 0.6,
+          ease: 'power2.inOut',
           pointerEvents: 'none',
           force3D: true
         });
       } else {
-        // Para todos los demás slides (los 15 restantes), ocultarlos instantáneamente para no destruir los FPS
         gsap.set(slide, { autoAlpha: 0, pointerEvents: 'none' });
       }
     });
