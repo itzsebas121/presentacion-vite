@@ -1,5 +1,5 @@
 import { memo, type CSSProperties, type ReactNode } from 'react';
-import { Atom, Ban, CheckCircle, CircleDot, GitBranch, Globe, Hand, Hourglass, MessageCircle, Mic, Package, Rocket, Server, Snail, Sparkles, Wrench, Zap } from 'lucide-react';
+import { Atom, Ban, CheckCircle, CircleDot, GitBranch, Globe, Hourglass, MessageCircle, Package, Rocket, Server, Snail, Sparkles, Wrench, Zap } from 'lucide-react';
 
 type SectionSlideProps = {
   num: string;
@@ -36,12 +36,10 @@ const LOGO_LINUX = 'https://logos-world.net/wp-content/uploads/2020/09/Linux-Log
 const LOGO_VITE = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1280px-Vitejs-logo.svg.png';
 const LOGO_GITHUB = 'https://cdn-icons-png.flaticon.com/512/25/25231.png';
 const LOGO_REACT = 'https://images.icon-icons.com/2415/PNG/512/react_original_wordmark_logo_icon_146375.png';
-const LOGO_SVELTE = 'https://raw.githubusercontent.com/detain/svg-logos/master/svg/s/svelte-wordmark-1.svg';
 const LOGO_HTML = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/960px-HTML5_logo_and_wordmark.svg.png';
 const LOGO_CSS = 'https://cdn-icons-png.flaticon.com/512/919/919826.png';
 const LOGO_JAVASCRIPT = 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png';
 const LOGO_TYPESCRIPT = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/960px-Typescript_logo_2020.svg.png';
-const LOGO_TAILWIND = 'https://cdn.worldvectorlogo.com/logos/tailwind-css-1.svg';
 const LOGO_CHATGPT = 'https://static.vecteezy.com/system/resources/previews/022/227/364/non_2x/openai-chatgpt-logo-icon-free-png.png';
 const LOGO_GEMINI = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/1280px-Google_Gemini_logo.svg.png';
 const LOGO_COPILOT = 'https://1000logos.net/wp-content/uploads/2023/11/Copilot-Logo.png';
@@ -64,11 +62,6 @@ type BackdropConfig = {
   }>;
 };
 
-function BackdropIcon({ icon, tone, style, soft = false }: { icon: ReactNode; tone: BackdropTone; style: CSSProperties; soft?: boolean }) {
-  return (
-    <span className={`backdrop-icon ${tone}${soft ? ' soft' : ''}`} style={style}>{icon}</span>
-  );
-}
 
 const BackdropScene = memo(function BackdropScene({ num }: { num: string }) {
   const slideId = num.slice(0, 2);
@@ -202,31 +195,6 @@ function BulletList({ items }: { items: string[] }) {
   );
 }
 
-function CodeBlock({ filename, lines }: { filename: string; lines: Array<{ prompt?: string; text: string }> }) {
-  return (
-    <div className="code-block" style={{ background: 'rgba(255,255,255,0.78)', borderColor: 'rgba(148,163,184,0.18)' }}>
-      <div className="code-header" style={{ background: 'rgba(248,250,252,0.96)', borderBottomColor: 'rgba(148,163,184,0.18)' }}>
-        <div className="code-dots">
-          <span className="code-dot red" />
-          <span className="code-dot yellow" />
-          <span className="code-dot green" />
-        </div>
-        <span className="code-filename">{filename}</span>
-      </div>
-      <div className="code-body">
-        {lines.map((line, index) => (
-          <div key={`${filename}-${index}`} className="code-line">
-            <div className="code-line-num">{String(index + 1).padStart(2, '0')}</div>
-            <div className="code-line-content">
-              {line.prompt ? <span className="code-prompt">{line.prompt}</span> : null}
-              {line.text}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function Timeline({ items }: { items: Array<{ title: string; text: string; tone: 'blue' | 'teal' | 'green' | 'amber' | 'red' }> }) {
   return (
@@ -730,7 +698,7 @@ export function Slide09CreateProject() {
             <div className="terminal-title">setup_entorno.sh</div>
           </div>
           <div className="terminal-body" style={{ minHeight: 220, padding: 14 }}>
-            {installSteps.map((item, idx) => (
+            {installSteps.map((item) => (
               <div key={item.command} style={{ marginBottom: 10 }}>
                 <div className="terminal-line" style={{ fontSize: 12 }}>
                   <span className="t-user">dev</span><span className="t-at">@</span><span className="t-dir">ubuntu</span><span className="t-prompt">:~$</span>
@@ -761,7 +729,7 @@ export function Slide09CreateProject() {
             <div className="terminal-title">create_vite_app.sh</div>
           </div>
           <div className="terminal-body" style={{ minHeight: 220, padding: 14 }}>
-            {createSteps.map((item, idx) => (
+            {createSteps.map((item) => (
               <div key={item.command} style={{ marginBottom: 10 }}>
                 <div className="terminal-line" style={{ fontSize: 12 }}>
                   <span className="t-user">dev</span><span className="t-at">@</span><span className="t-dir">ubuntu</span><span className="t-prompt">:~$</span>
