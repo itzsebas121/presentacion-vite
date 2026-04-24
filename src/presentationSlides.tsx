@@ -303,8 +303,7 @@ export function Slide01Cover() {
           </h1>
 
           <p className="animate-slide-up delay-2" style={{ fontSize: 18, color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: 28, maxWidth: 700 }}>
-            Charla técnica sobre la base que sostiene la aplicación: servidor, desarrollo web, Vite, GitHub e IA.
-          </p>
+          De la idea al despliegue: cómo construir y ejecutar una aplicación web moderna usando Vite, GitHub, IA y un servidor real. </p>
 
           <div className="animate-fade-in delay-3" style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
             <span className="chip blue" style={{ padding: '7px 14px' }}><Zap size={14} /> Vite</span>
