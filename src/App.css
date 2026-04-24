@@ -24,17 +24,12 @@
   pointer-events: none;
   overflow: hidden;
   will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .slide.active {
   opacity: 1;
-  transform: translateX(0);
   pointer-events: auto;
-}
-
-.slide.exiting {
-  opacity: 0;
-  transform: translateX(-60px);
 }
 
 /* ===== BACKGROUND ELEMENTS ===== */
@@ -63,23 +58,16 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 18% 24%, rgba(37, 99, 235, 0.09) 0 1.4px, transparent 1.4px),
-    radial-gradient(circle at 62% 44%, rgba(20, 184, 166, 0.08) 0 1.3px, transparent 1.3px),
-    radial-gradient(circle at 84% 72%, rgba(245, 158, 11, 0.10) 0 1.4px, transparent 1.4px);
-  background-size: 180px 120px, 200px 140px, 220px 160px;
-  background-repeat: repeat;
-  opacity: 0.34;
-  animation: code-pan 34s linear infinite;
+  opacity: 0.1;
 }
 
 .slide-bg-glow {
   position: absolute;
   z-index: 1;
   border-radius: 50%;
-  filter: blur(60px);
   pointer-events: none;
-  will-change: transform, opacity;
+  will-change: opacity;
+  opacity: 0.4;
 }
 
 .slide-bg-glow.soft {

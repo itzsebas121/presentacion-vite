@@ -72,238 +72,31 @@ function BackdropIcon({ icon, tone, style, soft = false }: { icon: ReactNode; to
 
 const BackdropScene = memo(function BackdropScene({ num }: { num: string }) {
   const slideId = num.slice(0, 2);
-  const secondaryIconSlots: CSSProperties[] = [
-    { top: '10%', left: '20%' },
-    { top: '15%', right: '25%' },
-    { bottom: '20%', left: '15%' },
-    { bottom: '15%', right: '20%' },
-  ];
 
   const defaultConfig: BackdropConfig = {
     watermarkIcon: <CircleDot size={156} strokeWidth={1.1} />,
     watermarkTone: 'blue',
-    icons: [
-      { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-      { icon: <GitBranch size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '20%', right: '10%', animationDelay: '1.2s' } },
-      { icon: <Package size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.6s' } },
-      { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.8s' } },
-    ],
+    icons: [],
   };
 
   const backdropBySlide: Record<string, BackdropConfig> = {
-    '02': {
-      watermarkIcon: <CircleDot size={148} strokeWidth={1.1} />,
-      watermarkTone: 'teal',
-      icons: [
-        { icon: <Server size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '10%', animationDelay: '0s' } },
-        { icon: <Globe size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '24%', right: '12%', animationDelay: '1.2s' } },
-        { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '16%', left: '16%', animationDelay: '0.8s' } },
-        { icon: <GitBranch size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '20%', animationDelay: '1.6s' } },
-      ],
-    },
-    '03': {
-      watermarkIcon: <Server size={150} strokeWidth={1.1} />,
-      watermarkTone: 'green',
-      icons: [
-        { icon: <Server size={18} strokeWidth={1.6} />, tone: 'green', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'amber', style: { top: '22%', right: '10%', animationDelay: '1s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'blue', style: { bottom: '16%', left: '12%', animationDelay: '0.5s' } },
-        { icon: <Rocket size={18} strokeWidth={1.6} />, tone: 'teal', style: { bottom: '10%', right: '18%', animationDelay: '1.4s' } },
-      ],
-      logos: [
-        { src: LOGO_UBUNTU, alt: 'Ubuntu logo', className: 'backdrop-ubuntu', style: { top: '4%', right: '3%' } },
-        { src: LOGO_LINUX, alt: 'Linux logo', className: 'backdrop-linux', style: { bottom: '4%', left: '3%' } },
-      ],
-    },
-    '04': {
-      watermarkIcon: <Wrench size={150} strokeWidth={1.1} />,
-      watermarkTone: 'blue',
-      icons: [
-        { icon: <CheckCircle size={18} strokeWidth={1.6} />, tone: 'green', style: { top: '14%', left: '8%', animationDelay: '0s' } },
-        { icon: <Server size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '24%', right: '14%', animationDelay: '1.1s' } },
-        { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '12%', animationDelay: '0.6s' } },
-        { icon: <Ban size={18} strokeWidth={1.6} />, tone: 'red', style: { bottom: '12%', right: '18%', animationDelay: '1.7s' } },
-      ],
-    },
-    '05': {
-      watermarkIcon: <Globe size={150} strokeWidth={1.1} />,
-      watermarkTone: 'amber',
-      icons: [
-        { icon: <Globe size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <CircleDot size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '24%', right: '10%', animationDelay: '1.1s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.7s' } },
-        { icon: <Rocket size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.6s' } },
-      ],
-      logos: [
-        { src: LOGO_HTML, alt: 'HTML logo', className: 'backdrop-html', style: { top: '4%', right: '4%' } },
-        { src: LOGO_CSS, alt: 'CSS logo', className: 'backdrop-css', style: { bottom: '4%', left: '4%' } },
-        { src: LOGO_JAVASCRIPT, alt: 'JavaScript logo', className: 'backdrop-javascript', style: { bottom: '4%', right: '4%' } },
-      ],
-    },
-    '06': {
-      watermarkIcon: <Hourglass size={148} strokeWidth={1.1} />,
-      watermarkTone: 'red',
-      icons: [
-        { icon: <Snail size={18} strokeWidth={1.6} />, tone: 'red', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'amber', style: { top: '22%', right: '10%', animationDelay: '1.1s' } },
-        { icon: <Hourglass size={18} strokeWidth={1.6} />, tone: 'blue', style: { bottom: '18%', left: '14%', animationDelay: '0.6s' } },
-        { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'teal', style: { bottom: '12%', right: '18%', animationDelay: '1.5s' } },
-      ],
-    },
-    '07': {
-      watermarkIcon: <Zap size={150} strokeWidth={1.1} />,
-      watermarkTone: 'blue',
-      icons: [
-        { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <CircleDot size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '22%', right: '10%', animationDelay: '1s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.7s' } },
-        { icon: <Rocket size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.6s' } },
-      ],
-      logos: [
-        { src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { bottom: '4%', left: '4%' } },
-        { src: LOGO_REACT, alt: 'React logo', className: 'backdrop-react', style: { top: '4%', right: '4%' } },
-      ],
-    },
-    '08': {
-      watermarkIcon: <Rocket size={148} strokeWidth={1.1} />,
-      watermarkTone: 'teal',
-      icons: [
-        { icon: <Globe size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '24%', right: '12%', animationDelay: '1.2s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.6s' } },
-        { icon: <GitBranch size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.5s' } },
-      ],
-      logos: [
-        { src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { bottom: '4%', left: '4%' } },
-        { src: LOGO_JAVASCRIPT, alt: 'JavaScript logo', className: 'backdrop-javascript', style: { top: '4%', right: '4%' } },
-      ],
-    },
-    '09': {
-      watermarkIcon: <Wrench size={148} strokeWidth={1.1} />,
-      watermarkTone: 'green',
-      icons: [
-        { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '22%', right: '10%', animationDelay: '1.1s' } },
-        { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.7s' } },
-        { icon: <Rocket size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.6s' } },
-      ],
-      logos: [
-        { src: LOGO_TYPESCRIPT, alt: 'TypeScript logo', className: 'backdrop-typescript', style: { top: '4%', right: '4%' } },
-        { src: LOGO_REACT, alt: 'React logo', className: 'backdrop-react', style: { bottom: '4%', left: '4%' } },
-      ],
-    },
-    '10': {
-      watermarkIcon: <Package size={148} strokeWidth={1.1} />,
-      watermarkTone: 'blue',
-      icons: [
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <CircleDot size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '24%', right: '12%', animationDelay: '1.2s' } },
-        { icon: <Globe size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.7s' } },
-        { icon: <GitBranch size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.4s' } },
-      ],
-      logos: [
-        { src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { top: '4%', right: '4%' } },
-      ],
-    },
-    '11': {
-      watermarkIcon: <CircleDot size={148} strokeWidth={1.1} />,
-      watermarkTone: 'teal',
-      icons: [
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <CircleDot size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '24%', right: '12%', animationDelay: '1.2s' } },
-      ],
-    },
-    '12': {
-      watermarkIcon: <GitBranch size={148} strokeWidth={1.1} />,
-      watermarkTone: 'teal',
-      icons: [
-        { icon: <GitBranch size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '24%', right: '12%', animationDelay: '1.1s' } },
-        { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.8s' } },
-        { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.5s' } },
-      ],
-      logos: [
-        { src: LOGO_GITHUB, alt: 'GitHub logo', className: 'backdrop-github', style: { top: '4%', right: '4%' } },
-      ],
-    },
-    '13': {
-      watermarkIcon: <Atom size={148} strokeWidth={1.1} />,
-      watermarkTone: 'amber',
-      icons: [
-        { icon: <Atom size={18} strokeWidth={1.6} />, tone: 'amber', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <CheckCircle size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '24%', right: '12%', animationDelay: '1.1s' } },
-        { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'teal', style: { bottom: '18%', left: '14%', animationDelay: '0.7s' } },
-        { icon: <Ban size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.6s' } },
-      ],
-      logos: [
-        { src: LOGO_CHATGPT, alt: 'ChatGPT logo', className: 'backdrop-chatgpt', style: { top: '4%', right: '4%' } },
-        { src: LOGO_GEMINI, alt: 'Gemini logo', className: 'backdrop-gemini', style: { bottom: '4%', left: '4%' } },
-        { src: LOGO_COPILOT, alt: 'Copilot logo', className: 'backdrop-copilot', style: { bottom: '4%', right: '4%' } },
-      ],
-    },
-    '14': {
-      watermarkIcon: <Rocket size={148} strokeWidth={1.1} />,
-      watermarkTone: 'green',
-      icons: [
-        { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '24%', right: '12%', animationDelay: '1.1s' } },
-        { icon: <CheckCircle size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.8s' } },
-        { icon: <Rocket size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.6s' } },
-      ],
-      logos: [
-        { src: LOGO_REACT, alt: 'React logo', className: 'backdrop-react', style: { top: '4%', right: '4%' } },
-        { src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { bottom: '4%', left: '4%' } },
-      ],
-    },
-    '15': {
-      watermarkIcon: <Server size={150} strokeWidth={1.1} />,
-      watermarkTone: 'blue',
-      icons: [
-        { icon: <Server size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'teal', style: { top: '22%', right: '10%', animationDelay: '1.1s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '18%', left: '14%', animationDelay: '0.7s' } },
-        { icon: <Rocket size={18} strokeWidth={1.6} />, tone: 'green', style: { bottom: '12%', right: '18%', animationDelay: '1.5s' } },
-      ],
-      logos: [
-        { src: LOGO_UBUNTU, alt: 'Ubuntu logo', className: 'backdrop-ubuntu', style: { top: '4%', right: '4%' } },
-        { src: LOGO_LINUX, alt: 'Linux logo', className: 'backdrop-linux', style: { bottom: '4%', left: '4%' } },
-      ],
-    },
-    '16': {
-      watermarkIcon: <Ban size={148} strokeWidth={1.1} />,
-      watermarkTone: 'red',
-      icons: [
-        { icon: <Ban size={18} strokeWidth={1.6} />, tone: 'red', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Wrench size={18} strokeWidth={1.6} />, tone: 'amber', style: { top: '22%', right: '10%', animationDelay: '1.1s' } },
-        { icon: <Package size={18} strokeWidth={1.6} />, tone: 'blue', style: { bottom: '18%', left: '14%', animationDelay: '0.7s' } },
-        { icon: <Hourglass size={18} strokeWidth={1.6} />, tone: 'teal', style: { bottom: '12%', right: '18%', animationDelay: '1.5s' } },
-      ],
-    },
-    '17': {
-      watermarkIcon: <CheckCircle size={148} strokeWidth={1.1} />,
-      watermarkTone: 'teal',
-      icons: [
-        { icon: <Server size={18} strokeWidth={1.6} />, tone: 'green', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '24%', right: '12%', animationDelay: '1.1s' } },
-        { icon: <GitBranch size={18} strokeWidth={1.6} />, tone: 'teal', style: { bottom: '18%', left: '14%', animationDelay: '0.7s' } },
-        { icon: <Rocket size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '12%', right: '18%', animationDelay: '1.6s' } },
-      ],
-    },
-    '18': {
-      watermarkIcon: <Sparkles size={148} strokeWidth={1.1} />,
-      watermarkTone: 'violet',
-      icons: [
-        { icon: <Zap size={18} strokeWidth={1.6} />, tone: 'blue', style: { top: '12%', left: '8%', animationDelay: '0s' } },
-        { icon: <Server size={18} strokeWidth={1.6} />, tone: 'green', style: { top: '24%', right: '12%', animationDelay: '1.2s' } },
-        { icon: <GitBranch size={18} strokeWidth={1.6} />, tone: 'teal', style: { bottom: '18%', left: '14%', animationDelay: '0.8s' } },
-        { icon: <Atom size={18} strokeWidth={1.6} />, tone: 'amber', style: { bottom: '12%', right: '18%', animationDelay: '1.5s' } },
-      ],
-      logos: [
-        { src: LOGO_UBUNTU, alt: 'Ubuntu logo', className: 'backdrop-ubuntu', style: { top: '4%', left: '4%' } },
-        { src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { bottom: '4%', right: '4%' } },
-        { src: LOGO_REACT, alt: 'React logo', className: 'backdrop-react', style: { top: '4%', right: '4%' } },
-      ],
-    },
+    '02': { watermarkIcon: <CircleDot size={148} strokeWidth={1.1} />, watermarkTone: 'teal', icons: [] },
+    '03': { watermarkIcon: <Server size={150} strokeWidth={1.1} />, watermarkTone: 'green', icons: [], logos: [{ src: LOGO_UBUNTU, alt: 'Ubuntu logo', className: 'backdrop-ubuntu', style: { top: '4%', right: '3%' } }, { src: LOGO_LINUX, alt: 'Linux logo', className: 'backdrop-linux', style: { bottom: '4%', left: '3%' } }] },
+    '04': { watermarkIcon: <Wrench size={150} strokeWidth={1.1} />, watermarkTone: 'blue', icons: [] },
+    '05': { watermarkIcon: <Globe size={150} strokeWidth={1.1} />, watermarkTone: 'amber', icons: [], logos: [{ src: LOGO_HTML, alt: 'HTML logo', className: 'backdrop-html', style: { top: '4%', right: '4%' } }, { src: LOGO_CSS, alt: 'CSS logo', className: 'backdrop-css', style: { bottom: '4%', left: '4%' } }, { src: LOGO_JAVASCRIPT, alt: 'JavaScript logo', className: 'backdrop-javascript', style: { bottom: '4%', right: '4%' } }] },
+    '06': { watermarkIcon: <Hourglass size={148} strokeWidth={1.1} />, watermarkTone: 'red', icons: [] },
+    '07': { watermarkIcon: <Zap size={150} strokeWidth={1.1} />, watermarkTone: 'blue', icons: [], logos: [{ src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { bottom: '4%', left: '4%' } }, { src: LOGO_REACT, alt: 'React logo', className: 'backdrop-react', style: { top: '4%', right: '4%' } }] },
+    '08': { watermarkIcon: <Rocket size={148} strokeWidth={1.1} />, watermarkTone: 'teal', icons: [], logos: [{ src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { bottom: '4%', left: '4%' } }, { src: LOGO_JAVASCRIPT, alt: 'JavaScript logo', className: 'backdrop-javascript', style: { top: '4%', right: '4%' } }] },
+    '09': { watermarkIcon: <Wrench size={148} strokeWidth={1.1} />, watermarkTone: 'green', icons: [], logos: [{ src: LOGO_TYPESCRIPT, alt: 'TypeScript logo', className: 'backdrop-typescript', style: { top: '4%', right: '4%' } }, { src: LOGO_REACT, alt: 'React logo', className: 'backdrop-react', style: { bottom: '4%', left: '4%' } }] },
+    '10': { watermarkIcon: <Package size={148} strokeWidth={1.1} />, watermarkTone: 'blue', icons: [], logos: [{ src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { top: '4%', right: '4%' } }] },
+    '11': { watermarkIcon: <CircleDot size={148} strokeWidth={1.1} />, watermarkTone: 'teal', icons: [] },
+    '12': { watermarkIcon: <GitBranch size={148} strokeWidth={1.1} />, watermarkTone: 'teal', icons: [], logos: [{ src: LOGO_GITHUB, alt: 'GitHub logo', className: 'backdrop-github', style: { top: '4%', right: '4%' } }] },
+    '13': { watermarkIcon: <Atom size={148} strokeWidth={1.1} />, watermarkTone: 'amber', icons: [], logos: [{ src: LOGO_CHATGPT, alt: 'ChatGPT logo', className: 'backdrop-chatgpt', style: { top: '4%', right: '4%' } }, { src: LOGO_GEMINI, alt: 'Gemini logo', className: 'backdrop-gemini', style: { bottom: '4%', left: '4%' } }, { src: LOGO_COPILOT, alt: 'Copilot logo', className: 'backdrop-copilot', style: { bottom: '4%', left: '4%' } }] },
+    '14': { watermarkIcon: <Rocket size={148} strokeWidth={1.1} />, watermarkTone: 'green', icons: [], logos: [{ src: LOGO_REACT, alt: 'React logo', className: 'backdrop-react', style: { top: '4%', right: '4%' } }, { src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { bottom: '4%', left: '4%' } }] },
+    '15': { watermarkIcon: <Server size={150} strokeWidth={1.1} />, watermarkTone: 'blue', icons: [], logos: [{ src: LOGO_UBUNTU, alt: 'Ubuntu logo', className: 'backdrop-ubuntu', style: { top: '4%', right: '4%' } }, { src: LOGO_LINUX, alt: 'Linux logo', className: 'backdrop-linux', style: { bottom: '4%', left: '4%' } }] },
+    '16': { watermarkIcon: <Ban size={148} strokeWidth={1.1} />, watermarkTone: 'red', icons: [] },
+    '17': { watermarkIcon: <CheckCircle size={148} strokeWidth={1.1} />, watermarkTone: 'teal', icons: [] },
+    '18': { watermarkIcon: <Sparkles size={148} strokeWidth={1.1} />, watermarkTone: 'violet', icons: [], logos: [{ src: LOGO_UBUNTU, alt: 'Ubuntu logo', className: 'backdrop-ubuntu', style: { top: '4%', left: '4%' } }, { src: LOGO_VITE, alt: 'Vite logo', className: 'backdrop-vite', style: { bottom: '4%', right: '4%' } }, { src: LOGO_REACT, alt: 'React logo', className: 'backdrop-react', style: { top: '4%', right: '4%' } }] },
   };
 
   const config = backdropBySlide[slideId] ?? defaultConfig;
@@ -311,21 +104,6 @@ const BackdropScene = memo(function BackdropScene({ num }: { num: string }) {
   return (
     <div className="slide-backdrop" aria-hidden="true">
       <div className={`backdrop-watermark-icon ${config.watermarkTone}`}>{config.watermarkIcon}</div>
-      {secondaryIconSlots.map((slot, index) => {
-        const source = config.icons[index % config.icons.length];
-        return (
-          <BackdropIcon
-            key={`${slideId}-icon-soft-${index}`}
-            icon={source.icon}
-            tone={source.tone}
-            soft
-            style={{ ...slot, animationDelay: `${0.3 * index}s` }}
-          />
-        );
-      })}
-      {config.icons.map((entry, index) => (
-        <BackdropIcon key={`${slideId}-icon-${index}`} icon={entry.icon} tone={entry.tone} style={entry.style} />
-      ))}
       {config.logos?.map((logo, index) => (
         <div key={`${slideId}-logo-${index}`} className={`backdrop-logo ${logo.className}`} style={logo.style}>
           <div className="backdrop-logo-glow" />

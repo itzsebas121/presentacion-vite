@@ -100,56 +100,12 @@ export default function App() {
       gsap.killTweensOf(slide.querySelectorAll('.slide-title, .animate-slide-up, .animate-fade-in, .animate-scale-in'));
       
       if (isActive) {
-        // Animación de entrada optimizada
-        const isNextDir = direction === 'next';
-        
         gsap.fromTo(slide, 
-          { 
-            autoAlpha: 0, 
-            scale: isNextDir ? 0.9 : 1.1, 
-            xPercent: isNextDir ? 100 : -100,
-            pointerEvents: 'none'
-          },
-          { 
-            autoAlpha: 1, 
-            scale: 1,
-            xPercent: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-            force3D: true,
-            pointerEvents: 'auto',
-            onStart: () => {
-              const titles = slide.querySelectorAll('.slide-title');
-              if (titles.length) {
-                gsap.fromTo(titles, 
-                  { y: 30, autoAlpha: 0 },
-                  { y: 0, autoAlpha: 1, duration: 0.5, ease: 'power2.out', delay: 0.1 }
-                );
-              }
-              
-              const animatedElements = slide.querySelectorAll('.animate-slide-up, .animate-fade-in, .animate-scale-in');
-              if (animatedElements.length) {
-                gsap.fromTo(animatedElements,
-                  { y: 20, autoAlpha: 0 },
-                  { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out', stagger: 0.02, delay: 0.15 }
-                );
-              }
-            }
-          }
+          { autoAlpha: 0, xPercent: direction === 'next' ? 30 : -30 },
+          { autoAlpha: 1, xPercent: 0, duration: 0.4, ease: 'none', force3D: true, pointerEvents: 'auto' }
         );
-      } else if (isExiting && current !== previous) {
-        // Animación de salida optimizada
-        const isNextDir = direction === 'next';
-
-        gsap.to(slide, {
-          autoAlpha: 0,
-          scale: isNextDir ? 1.1 : 0.9,
-          xPercent: isNextDir ? -100 : 100,
-          duration: 0.6,
-          ease: 'power2.inOut',
-          pointerEvents: 'none',
-          force3D: true
-        });
+      } else if (isExiting) {
+        gsap.to(slide, { autoAlpha: 0, xPercent: direction === 'next' ? -30 : 30, duration: 0.4, ease: 'none', force3D: true, pointerEvents: 'none' });
       } else {
         gsap.set(slide, { autoAlpha: 0, pointerEvents: 'none' });
       }
